@@ -1,30 +1,18 @@
+"use client"
+
+import { useAuth } from "@/contexts/AuthContext";
+import Link from "next/link";
+import Navigation from "@/components/Navigation";
+
 export default function Home() {
+  const { user, profile } = useAuth()
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-black to-gray-800 text-white font-sans">
-      {/* Navigation Header - Glassmorphism */}
-      <header className="sticky top-0 z-50 backdrop-blur-xl bg-black/30 border-b border-gray-800/50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center">
-              <div className="flex-shrink-0">
-                <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-                  FitMeet
-                </h1>
-              </div>
-            </div>
-            
-            {/* Auth Buttons */}
-            <div className="flex items-center space-x-3">
-              <button className="text-gray-300 hover:text-white border border-gray-600 hover:border-blue-400 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200">
-                Sign In
-              </button>
-              <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-4 py-2 rounded-xl text-sm font-medium shadow-lg shadow-blue-500/25 transition-all duration-200 hover:shadow-blue-500/40">
-                Sign Up
-              </button>
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Navigation Header */}
+      <div className="sticky top-0">
+        <Navigation />
+      </div>
 
       {/* Hero Section */}
       <main className="relative overflow-hidden">
@@ -39,26 +27,56 @@ export default function Home() {
           <div className="text-center">
             {/* Hero Headline */}
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight">
-              <span className="block">Find Your Perfect</span>
-              <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-                Fitness Class
-              </span>
+              {user ? (
+                <>
+                  <span className="block">Welcome back,</span>
+                  <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
+                    {profile?.first_name}!!
+                  </span>
+                </>
+              ) : (
+                <>
+                  <span className="block">Find Your Perfect</span>
+                  <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
+                    Fitness Class
+                  </span>
+                </>
+              )}
             </h1>
             
             {/* Hero Subtext */}
             <p className="mt-6 max-w-3xl mx-auto text-xl text-gray-300 leading-relaxed">
-              Discover and join <span className="text-emerald-400 font-semibold">free fitness classes</span> via Google Meet. 
-              Connect with trainers, book sessions, and achieve your goals all from home.
+              {user ? (
+                "Ready to continue your fitness journey? Discover new classes, connect with trainers, and achieve your goals."
+              ) : (
+                <>
+                  Discover and join <span className="text-emerald-400 font-semibold">free fitness classes</span> via Google Meet. 
+                  Connect with trainers, book sessions, and achieve your goals all from home.
+                </>
+              )}
             </p>
             
             {/* Hero CTAs */}
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105">
-                Browse Classes
-              </button>
-              <button className="w-full sm:w-auto border-2 border-gray-600 hover:border-blue-400 text-gray-300 hover:text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:bg-blue-500/10">
-                Become a Trainer
-              </button>
+              {user ? (
+                <>
+                  <Link href="/dashboard" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block text-center">
+                    Go to Dashboard
+                  </Link>
+                  <button className="w-full sm:w-auto border-2 border-gray-600 hover:border-blue-400 text-gray-300 hover:text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:bg-blue-500/10">
+                    Browse Classes
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link href="/auth/register" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block text-center">
+                    Get Started
+                  </Link>
+                  <Link href="/auth/login" className="w-full sm:w-auto border-2 border-gray-600 hover:border-blue-400 text-gray-300 hover:text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:bg-blue-500/10 inline-block text-center">
+                    Sign In
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>
@@ -145,9 +163,15 @@ export default function Home() {
               Join thousands of users already training on <span className="text-emerald-400 font-semibold">FitMeet for free</span>. 
               Discover classes, connect with trainers, and transform your fitness routine.
             </p>
-            <button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-12 py-4 rounded-2xl text-xl font-bold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105">
-              Get Started Today
-            </button>
+            {user ? (
+              <Link href="/dashboard" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-12 py-4 rounded-2xl text-xl font-bold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block">
+                Go to Dashboard
+              </Link>
+            ) : (
+              <Link href="/auth/register" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-12 py-4 rounded-2xl text-xl font-bold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block">
+                Get Started Today
+              </Link>
+            )}
           </div>
         </div>
       </section>
