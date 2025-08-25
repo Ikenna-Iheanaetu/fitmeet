@@ -1,4 +1,3 @@
-````markdown
 # 🏋️‍♀️ FitMeet
 
 **FitMeet** is a free online platform for discovering, booking, and joining fitness classes.  
