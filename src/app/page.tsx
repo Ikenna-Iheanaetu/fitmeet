@@ -24,70 +24,379 @@ export default function Home() {
         </div>
         
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 lg:py-32">
-          <div className="text-center">
-            {/* Hero Headline */}
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight">
-              {user ? (
-                <>
-                  <span className="block">Welcome back,</span>
-                  <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-                    {profile?.first_name}!!
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span className="block">Find Your Perfect</span>
-                  <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
-                    Fitness Class
-                  </span>
-                </>
-              )}
-            </h1>
-            
-            {/* Hero Subtext */}
-            <p className="mt-6 max-w-3xl mx-auto text-xl text-gray-300 leading-relaxed">
-              {user ? (
-                "Ready to continue your fitness journey? Discover new classes, connect with trainers, and achieve your goals."
-              ) : (
-                <>
-                  Discover and join <span className="text-emerald-400 font-semibold">free fitness classes</span> via Google Meet. 
-                  Connect with trainers, book sessions, and achieve your goals all from home.
-                </>
-              )}
-            </p>
-            
-            {/* Hero CTAs */}
-            <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center items-center">
-              {user ? (
-                <>
-                  <Link href="/dashboard" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block text-center">
-                    Go to Dashboard
-                  </Link>
-                  <button className="w-full sm:w-auto border-2 border-gray-600 hover:border-blue-400 text-gray-300 hover:text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:bg-blue-500/10">
-                    Browse Classes
-                  </button>
-                </>
-              ) : (
-                <>
-                  <Link href="/auth/register" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-8 py-4 rounded-2xl text-lg font-semibold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block text-center">
-                    Get Started
-                  </Link>
-                  <Link href="/auth/login" className="w-full sm:w-auto border-2 border-gray-600 hover:border-blue-400 text-gray-300 hover:text-white px-8 py-4 rounded-2xl text-lg font-semibold transition-all duration-300 hover:bg-blue-500/10 inline-block text-center">
-                    Sign In
-                  </Link>
-                </>
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div className="text-center lg:text-left">
+              {/* Hero Headline */}
+              <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                {user ? (
+                  <>
+                    <span className="block">Welcome back,</span>
+                    <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
+                      {profile?.first_name}!!
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="block text-white">Transform Your</span>
+                    <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
+                      Body & Mind
+                    </span>
+                    <span className="block text-white text-4xl sm:text-5xl lg:text-6xl mt-2">Elevate Your Life</span>
+                  </>
+                )}
+              </h1>
+              
+              {/* Hero Subtext */}
+              <p className="mt-6 text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                {user ? (
+                  "Ready to continue your fitness journey? Discover new classes, connect with trainers, and achieve your goals."
+                ) : (
+                  <>
+                    Achieve your fitness goals with <span className="text-emerald-400 font-semibold">personalized workouts</span>, 
+                    expert trainers, and a <span className="text-blue-400 font-semibold">supportive community</span>. 
+                    Join thousands transforming their lives.
+                  </>
+                )}
+              </p>
+              
+              {/* Hero CTAs */}
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                {user ? (
+                  <>
+                    <Link href="/dashboard" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block text-center">
+                      Go to Dashboard
+                    </Link>
+                    <button className="w-full sm:w-auto border-2 border-gray-600 hover:border-blue-400 text-gray-300 hover:text-white px-10 py-5 rounded-2xl text-lg font-bold transition-all duration-300 hover:bg-blue-500/10">
+                      Browse Classes
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/auth/register" className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-5 rounded-2xl text-lg font-bold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block text-center group">
+                      <span className="flex items-center justify-center gap-2">
+                        Get Started Free
+                        <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                    </Link>
+                    <Link href="/auth/login" className="w-full sm:w-auto border-2 border-gray-600 hover:border-blue-400 text-gray-300 hover:text-white px-10 py-5 rounded-2xl text-lg font-bold transition-all duration-300 hover:bg-blue-500/10 inline-block text-center">
+                      Watch Demo
+                    </Link>
+                  </>
+                )}
+              </div>
+              
+              {/* Trust Indicators */}
+              {!user && (
+                <div className="mt-12 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-8 text-gray-400">
+                  <div className="flex items-center gap-2">
+                    <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm font-medium">Free to join</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm font-medium">No equipment needed</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                    <span className="text-sm font-medium">Cancel anytime</span>
+                  </div>
+                </div>
               )}
             </div>
+            
+            {/* Right Content - Statistics */}
+            {!user && (
+              <div className="relative">
+                {/* Main Statistics Cards */}
+                <div className="grid grid-cols-2 gap-6">
+                  {/* Active Members */}
+                  <div className="bg-gradient-to-br from-blue-500/20 to-blue-600/10 backdrop-blur-sm border border-blue-500/30 rounded-3xl p-8 text-center relative overflow-hidden group hover:scale-105 transition-all duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10">
+                      <div className="text-4xl lg:text-5xl font-bold text-white mb-2">2.4k+</div>
+                      <div className="text-blue-300 font-semibold text-lg mb-2">Active Members</div>
+                      <div className="flex items-center justify-center gap-2 text-emerald-400 text-sm">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 11l5-5m0 0l5 5m-5-5v12" />
+                        </svg>
+                        <span>+23% this month</span>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Success Rate */}
+                  <div className="bg-gradient-to-br from-purple-500/20 to-purple-600/10 backdrop-blur-sm border border-purple-500/30 rounded-3xl p-8 text-center relative overflow-hidden group hover:scale-105 transition-all duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10">
+                      <div className="text-4xl lg:text-5xl font-bold text-white mb-2">95%</div>
+                      <div className="text-purple-300 font-semibold text-lg mb-2">Success Rate</div>
+                      <div className="flex items-center justify-center gap-1 text-yellow-400 text-sm">
+                        {[...Array(5)].map((_, i) => (
+                          <svg key={i} className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                          </svg>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  {/* Classes Available */}
+                  <div className="bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 backdrop-blur-sm border border-emerald-500/30 rounded-3xl p-8 text-center relative overflow-hidden group hover:scale-105 transition-all duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10">
+                      <div className="text-4xl lg:text-5xl font-bold text-white mb-2">50+</div>
+                      <div className="text-emerald-300 font-semibold text-lg mb-2">Class Types</div>
+                      <div className="text-emerald-400 text-sm font-medium">Live & On-demand</div>
+                    </div>
+                  </div>
+                  
+                  {/* Expert Trainers */}
+                  <div className="bg-gradient-to-br from-orange-500/20 to-orange-600/10 backdrop-blur-sm border border-orange-500/30 rounded-3xl p-8 text-center relative overflow-hidden group hover:scale-105 transition-all duration-300">
+                    <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="relative z-10">
+                      <div className="text-4xl lg:text-5xl font-bold text-white mb-2">120+</div>
+                      <div className="text-orange-300 font-semibold text-lg mb-2">Expert Trainers</div>
+                      <div className="text-orange-400 text-sm font-medium">Certified Professionals</div>
+                    </div>
+                  </div>
+                </div>
+                
+                {/* Floating Elements */}
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-blue-400/20 to-purple-500/20 rounded-full blur-xl animate-pulse"></div>
+                <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-gradient-to-br from-emerald-400/20 to-blue-500/20 rounded-full blur-xl animate-pulse delay-700"></div>
+              </div>
+            )}
           </div>
         </div>
       </main>
 
+      {/* Testimonials Section */}
+      <section className="relative py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500/20 to-purple-500/20 backdrop-blur-sm border border-blue-500/30 rounded-full px-6 py-2 mb-6">
+              <svg className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+              </svg>
+              <span className="text-sm font-semibold text-white">REAL RESULTS, REAL PEOPLE</span>
+            </div>
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+              Your Fitness Goals,
+              <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
+                Their Expertise
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Over 1000+ Certified Trainers Brought Outstanding Expertise To Help You Achieve Your Fitness Goals
+            </p>
+          </div>
+          
+          {/* Testimonials Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Testimonial 1 */}
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:bg-gray-800/70 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 group">
+              <div className="flex items-center justify-center gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <blockquote className="text-gray-300 text-lg leading-relaxed mb-6 italic">
+                "Lost 25lbs in 3 months thanks to Fitto. Amazing coaches and great programs!"
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-purple-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                  A
+                </div>
+                <div>
+                  <div className="font-semibold text-white">Alex Thompson</div>
+                  <div className="text-gray-400 text-sm">Lost 25lbs • 3 months</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 2 */}
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:bg-gray-800/70 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2 group">
+              <div className="flex items-center justify-center gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <blockquote className="text-gray-300 text-lg leading-relaxed mb-6 italic">
+                "The virtual sessions are incredible! I can workout from anywhere with world-class trainers."
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                  S
+                </div>
+                <div>
+                  <div className="font-semibold text-white">Sarah Mitchell</div>
+                  <div className="text-gray-400 text-sm">Gained 15lbs muscle • 4 months</div>
+                </div>
+              </div>
+            </div>
+            
+            {/* Testimonial 3 */}
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl p-8 hover:bg-gray-800/70 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 hover:-translate-y-2 group">
+              <div className="flex items-center justify-center gap-1 mb-6">
+                {[...Array(5)].map((_, i) => (
+                  <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                ))}
+              </div>
+              <blockquote className="text-gray-300 text-lg leading-relaxed mb-6 italic">
+                "Best investment I've made! The community support and expert guidance is unmatched."
+              </blockquote>
+              <div className="flex items-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-500 rounded-full flex items-center justify-center text-white font-bold text-lg mr-4">
+                  M
+                </div>
+                <div>
+                  <div className="font-semibold text-white">Marcus Johnson</div>
+                  <div className="text-gray-400 text-sm">Completed Marathon • 6 months</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Training Programs Section */}
+      <section className="relative py-20 lg:py-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
+              Train Smarter
+              <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-blue-600 bg-clip-text text-transparent">
+                Unleash Your Potential
+              </span>
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              Achieve Your Fitness Goals with AI-Powered Personalized Programs
+            </p>
+          </div>
+          
+          {/* Programs Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Strength Training */}
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl overflow-hidden hover:bg-gray-800/70 hover:border-blue-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 hover:-translate-y-2 group">
+              <div className="relative h-48 bg-gradient-to-br from-blue-500/20 to-blue-600/10 flex items-center justify-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center shadow-lg shadow-blue-500/25">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                  </svg>
+                </div>
+                <div className="absolute top-4 right-4 bg-blue-500/20 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium text-blue-300">
+                  Beginner Friendly
+                </div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-white mb-3">Strength Training</h3>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  Build muscle and increase strength with our progressive resistance training programs.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-gray-400">
+                    <span className="block">45-60 min</span>
+                    <span className="block">3x per week</span>
+                  </div>
+                  <button className="bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white px-6 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105">
+                    View Classes
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            {/* Cardio & HIIT */}
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl overflow-hidden hover:bg-gray-800/70 hover:border-purple-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-purple-500/10 hover:-translate-y-2 group">
+              <div className="relative h-48 bg-gradient-to-br from-purple-500/20 to-purple-600/10 flex items-center justify-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg shadow-purple-500/25">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <div className="absolute top-4 right-4 bg-purple-500/20 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium text-purple-300">
+                  High Intensity
+                </div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-white mb-3">Cardio & HIIT</h3>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  Boost your cardiovascular health and burn calories with high-intensity interval training.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-gray-400">
+                    <span className="block">30-45 min</span>
+                    <span className="block">4x per week</span>
+                  </div>
+                  <button className="bg-gradient-to-r from-purple-500 to-purple-600 hover:from-purple-600 hover:to-purple-700 text-white px-6 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105">
+                    View Classes
+                  </button>
+                </div>
+              </div>
+            </div>
+            
+            {/* Flexibility & Yoga */}
+            <div className="bg-gray-800/50 backdrop-blur-sm border border-gray-700/50 rounded-3xl overflow-hidden hover:bg-gray-800/70 hover:border-emerald-500/50 transition-all duration-300 hover:shadow-2xl hover:shadow-emerald-500/10 hover:-translate-y-2 group">
+              <div className="relative h-48 bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 flex items-center justify-center">
+                <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-emerald-600 rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/25">
+                  <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                  </svg>
+                </div>
+                <div className="absolute top-4 right-4 bg-emerald-500/20 backdrop-blur-sm rounded-full px-3 py-1 text-sm font-medium text-emerald-300">
+                  Mind & Body
+                </div>
+              </div>
+              <div className="p-8">
+                <h3 className="text-xl font-bold text-white mb-3">Flexibility & Yoga</h3>
+                <p className="text-gray-400 mb-6 leading-relaxed">
+                  Improve flexibility, balance, and mental well-being with our yoga and stretching programs.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="text-sm text-gray-400">
+                    <span className="block">60-90 min</span>
+                    <span className="block">3x per week</span>
+                  </div>
+                  <button className="bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 text-white px-6 py-2 rounded-xl text-sm font-medium transition-all duration-200 hover:scale-105">
+                    View Classes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          {/* Browse All Classes CTA */}
+          <div className="text-center mt-16">
+            <Link href="/classes" className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-10 py-4 rounded-2xl text-lg font-bold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105">
+              <span>Browse All Classes</span>
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+              </svg>
+            </Link>
+          </div>
+        </div>
+      </section>
+      
       {/* Features Section - Why Choose FitMeet? */}
       <section className="relative py-20 lg:py-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-bold text-white mb-4">
-              Why Choose FitMeet?
+              Discover What Sets Us Apart
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
               Everything you need to find and join the perfect fitness class
@@ -152,26 +461,131 @@ export default function Home() {
       </section>
 
       {/* Call to Action Banner */}
-      <section className="relative py-20">
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-purple-600/20 backdrop-blur-sm"></div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="bg-gray-800/30 backdrop-blur-lg border border-gray-700/50 rounded-3xl p-12 lg:p-20">
-            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-              Ready to start your fitness journey?
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed">
-              Join thousands of users already training on <span className="text-emerald-400 font-semibold">FitMeet for free</span>. 
-              Discover classes, connect with trainers, and transform your fitness routine.
-            </p>
-            {user ? (
-              <Link href="/dashboard" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-12 py-4 rounded-2xl text-xl font-bold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block">
-                Go to Dashboard
-              </Link>
-            ) : (
-              <Link href="/auth/register" className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-12 py-4 rounded-2xl text-xl font-bold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block">
-                Get Started Today
-              </Link>
-            )}
+      <section className="relative py-20 lg:py-32 overflow-hidden">
+        {/* Enhanced Background */}
+        <div className="absolute inset-0">
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-blue-600/10 via-purple-600/20 to-black/40"></div>
+          <div className="absolute top-20 left-20 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            {/* Premium Badge */}
+            <div className="inline-flex items-center gap-2 bg-gradient-to-r from-emerald-500/20 to-blue-500/20 backdrop-blur-sm border border-emerald-500/30 rounded-full px-6 py-2 mb-8">
+              <svg className="w-5 h-5 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              </svg>
+              <span className="text-sm font-semibold text-white">ARE YOU READY TO TRANSFORM YOUR LIFE?</span>
+            </div>
+            
+            {/* Main CTA Content */}
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-8">
+                <span className="block text-white">Connect</span>
+                <span className="block bg-gradient-to-r from-blue-400 via-purple-500 to-emerald-400 bg-clip-text text-transparent">
+                  Engage
+                </span>
+                <span className="block text-white">Transform</span>
+              </h2>
+              
+              <p className="text-xl lg:text-2xl text-gray-300 max-w-4xl mx-auto mb-12 leading-relaxed">
+                Join thousands of fitness enthusiasts who've already transformed their lives with our 
+                <span className="text-emerald-400 font-semibold">expert-led programs</span> and 
+                <span className="text-blue-400 font-semibold">supportive community</span>. 
+                Your journey to a healthier, stronger you starts now.
+              </p>
+              
+              {/* Enhanced CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-12">
+                {user ? (
+                  <>
+                    <Link href="/dashboard" className="group w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-12 py-6 rounded-2xl text-xl font-bold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block text-center">
+                      <span className="flex items-center justify-center gap-3">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+                        </svg>
+                        Go to Dashboard
+                        <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                    </Link>
+                    <Link href="/classes" className="group w-full sm:w-auto border-2 border-gray-600 hover:border-blue-400 text-gray-300 hover:text-white px-12 py-6 rounded-2xl text-xl font-bold transition-all duration-300 hover:bg-blue-500/10 inline-block text-center">
+                      <span className="flex items-center justify-center gap-3">
+                        Explore Classes
+                        <svg className="w-5 h-5 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                      </span>
+                    </Link>
+                  </>
+                ) : (
+                  <>
+                    <Link href="/auth/register" className="group w-full sm:w-auto bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-12 py-6 rounded-2xl text-xl font-bold shadow-2xl shadow-blue-500/25 transition-all duration-300 hover:shadow-blue-500/40 hover:scale-105 inline-block text-center relative overflow-hidden">
+                      <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/10 to-white/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                      <span className="relative flex items-center justify-center gap-3">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        Start Your Fitness Journey
+                        <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </span>
+                    </Link>
+                    <Link href="/auth/login" className="group w-full sm:w-auto border-2 border-gray-600 hover:border-emerald-400 text-gray-300 hover:text-white px-12 py-6 rounded-2xl text-xl font-bold transition-all duration-300 hover:bg-emerald-500/10 inline-block text-center">
+                      <span className="flex items-center justify-center gap-3">
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1M9 16v-2a3 3 0 116 0v2M12 3a9 9 0 11-9 9 9 9 0 019-9z" />
+                        </svg>
+                        Watch Success Stories
+                        <svg className="w-5 h-5 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1M9 16v-2a3 3 0 116 0v2M12 3a9 9 0 11-9 9 9 9 0 019-9z" />
+                        </svg>
+                      </span>
+                    </Link>
+                  </>
+                )}
+              </div>
+              
+              {/* Trust Indicators */}
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-8 text-gray-400">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-white">Free Forever</div>
+                    <div className="text-sm text-gray-400">No hidden fees</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500/20 to-blue-600/10 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-blue-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-white">Community Support</div>
+                    <div className="text-sm text-gray-400">24/7 guidance</div>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500/20 to-purple-600/10 rounded-full flex items-center justify-center">
+                    <svg className="w-6 h-6 text-purple-400" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clipRule="evenodd" />
+                    </svg>
+                  </div>
+                  <div>
+                    <div className="font-semibold text-white">Expert Trainers</div>
+                    <div className="text-sm text-gray-400">Certified professionals</div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -185,7 +599,7 @@ export default function Home() {
               <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
                 FitMeet
               </h1>
-              <span className="text-gray-400">© 2024 FitMeet. All rights reserved.</span>
+              <span className="text-gray-400">© { new Date().getFullYear() } FitMeet. All rights reserved.</span>
             </div>
             
             {/* Quick Links */}
